@@ -6,7 +6,7 @@ import type {
 import { getSession, setSession } from '../auth/session'
 import type { Session } from '../auth/session'
 
-const BASE_URL: string = import.meta.env.VITE_API_URL ?? 'http://localhost:5000'
+const BASE_URL: string = import.meta.env.VITE_API_URL ?? 'http://localhost:3000'
 
 export class ApiError extends Error {
   readonly status: number
