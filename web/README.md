@@ -1,32 +1,39 @@
-# React + TypeScript + Vite
+# CADchat Review Cube: web
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+The React Three Fiber front end. For the full project overview, API reference and deployment steps, see the [root README](../README.md).
 
-Currently, two official plugins are available:
+## Setup
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+You need Node 24 or newer and the API from `../api` running.
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+| Variable | Description |
+|---|---|
+| `VITE_API_URL` | API base URL, for example `http://localhost:3000`. Baked in at build time |
+| `VITE_AUTH_REQUIRED` | `true` to show the sign-in form (the API must also have `AUTH_REQUIRED=true`) |
+
+Open the URL Vite prints (usually http://localhost:5173) and click the cube.
+
+## Scripts
+
+```bash
+npm run dev       # start Vite
+npm run build     # type check and build to dist/
+npm run preview   # serve the production build
+npm run lint      # Oxlint
+npm test          # Vitest
+```
+
+## Layout
+
+```
+src/api/      API client and types
+src/auth/     Sign-in gate and session storage
+src/review/   Overlay, comment form, comment list, state reducer
+src/scene/    The 3D cube
+```
