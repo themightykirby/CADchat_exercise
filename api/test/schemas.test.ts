@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { createReviewBody, cubeIdQuery, idParams, patchReviewBody } from '../src/schemas.ts';
+import { createReviewBody, cubeIdQuery, idParams, patchReviewBody } from '../src/models/schemas.ts';
 
 const UUID = '3f2b8c1e-9d4a-4e6b-8a57-1c2d3e4f5a6b';
 

@@ -27,9 +27,14 @@ web/                 React Three Fiber front end
   src/review/        Overlay, comment form, comment list, state reducer
   src/scene/         The 3D cube
 api/                 Express API
-  src/routes/        /reviews and /auth routes
+  src/app.ts         Builds the Express app
+  src/server.ts      Starts the server
+  src/config/        Environment variable loading and validation
+  src/db/            Supabase client and database access (reviewsRepo.ts)
+  src/lib/           Shared helpers: errors and logging
   src/middleware/    Authentication and error handling
-  src/reviewsRepo.ts Database access
+  src/models/        Request schemas and types
+  src/routes/        /reviews and /auth routes
   test/              API tests
 supabase/migrations/ SQL that creates the reviews table and replace_review function
 ```

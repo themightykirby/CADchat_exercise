@@ -1,8 +1,8 @@
 import type { PostgrestError, SupabaseClient } from '@supabase/supabase-js';
-import { asReview, asReviews } from './db/supabase.ts';
-import { HttpError } from './errors.ts';
-import { logError } from './logger.ts';
-import type { Review, ReviewStatus } from './types.ts';
+import { asReview, asReviews } from './supabase.ts';
+import { HttpError } from '../lib/errors.ts';
+import { logError } from '../lib/logger.ts';
+import type { Review, ReviewStatus } from '../models/types.ts';
 
 function dbFailure(action: string, error: PostgrestError): HttpError {
   logError(`database error during ${action}`, error, { code: error.code }, false);

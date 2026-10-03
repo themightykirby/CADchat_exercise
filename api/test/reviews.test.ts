@@ -4,13 +4,13 @@ import supertest from 'supertest';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { createApp } from '../src/app.ts';
 import type { AuthService } from '../src/middleware/auth.ts';
-import { loadConfig } from '../src/config.ts';
-import type { Config } from '../src/config.ts';
-import { logError } from '../src/logger.ts';
-import { createReviewsRepo } from '../src/reviewsRepo.ts';
-import type { Review } from '../src/types.ts';
+import { loadConfig } from '../src/config/index.ts';
+import type { Config } from '../src/config/index.ts';
+import { logError } from '../src/lib/logger.ts';
+import { createReviewsRepo } from '../src/db/reviewsRepo.ts';
+import type { Review } from '../src/models/types.ts';
 
-vi.mock('../src/logger.ts', () => ({
+vi.mock('../src/lib/logger.ts', () => ({
   logger: { info: vi.fn(), warn: vi.fn(), error: vi.fn() },
   logError: vi.fn(),
 }));

@@ -1,11 +1,11 @@
 import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
-import type { Config } from './config.ts';
+import type { Config } from './config/index.ts';
 import { requireAuth } from './middleware/auth.ts';
 import type { AuthService } from './middleware/auth.ts';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler.ts';
-import type { ReviewsRepo } from './reviewsRepo.ts';
+import type { ReviewsRepo } from './db/reviewsRepo.ts';
 import { createAuthRouter } from './routes/auth.ts';
 import { createReviewsRouter } from './routes/reviews.ts';
 

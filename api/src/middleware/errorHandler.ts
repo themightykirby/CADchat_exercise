@@ -1,6 +1,6 @@
 import type { ErrorRequestHandler, RequestHandler } from 'express';
-import { HttpError } from '../errors.ts';
-import { logError, logger } from '../logger.ts';
+import { HttpError } from '../lib/errors.ts';
+import { logError, logger } from '../lib/logger.ts';
 
 interface LibraryError {
   status?: unknown;

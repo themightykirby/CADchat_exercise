@@ -1,7 +1,7 @@
 import express from 'express';
-import { HttpError } from '../errors.ts';
+import { HttpError } from '../lib/errors.ts';
 import type { AuthService } from '../middleware/auth.ts';
-import { loginBody, refreshBody } from '../schemas.ts';
+import { loginBody, refreshBody } from '../models/schemas.ts';
 
 export function createAuthRouter(auth: AuthService): express.Router {
   const router = express.Router();

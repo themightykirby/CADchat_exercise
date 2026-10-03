@@ -1,7 +1,7 @@
 import { createClient } from '@supabase/supabase-js';
 import type { SupabaseClient } from '@supabase/supabase-js';
-import type { Config } from '../config.ts';
-import type { Review } from '../types.ts';
+import type { Config } from '../config/index.ts';
+import type { Review } from '../models/types.ts';
 
 export function createSupabaseClient(
   config: Config,

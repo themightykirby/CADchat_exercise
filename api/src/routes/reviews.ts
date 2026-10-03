@@ -1,9 +1,9 @@
 import express from 'express';
 import type { Response } from 'express';
 import type { z } from 'zod';
-import { HttpError } from '../errors.ts';
-import type { ReviewsRepo } from '../reviewsRepo.ts';
-import { createReviewBody, cubeIdQuery, idParams, patchReviewBody } from '../schemas.ts';
+import { HttpError } from '../lib/errors.ts';
+import type { ReviewsRepo } from '../db/reviewsRepo.ts';
+import { createReviewBody, cubeIdQuery, idParams, patchReviewBody } from '../models/schemas.ts';
 
 function validate<S extends z.ZodType>(
   schema: S,

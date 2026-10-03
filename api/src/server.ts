@@ -1,9 +1,9 @@
 import { createApp } from './app.ts';
-import { ConfigError, loadConfig } from './config.ts';
+import { ConfigError, loadConfig } from './config/index.ts';
 import { createSupabaseClient } from './db/supabase.ts';
 import { createAuthService } from './middleware/auth.ts';
-import { logError, logger } from './logger.ts';
-import { createReviewsRepo } from './reviewsRepo.ts';
+import { logError, logger } from './lib/logger.ts';
+import { createReviewsRepo } from './db/reviewsRepo.ts';
 
 function main(): void {
   const config = loadConfig();

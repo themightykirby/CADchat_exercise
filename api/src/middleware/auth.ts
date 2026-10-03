@@ -1,8 +1,8 @@
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type { RequestHandler } from 'express';
 import { createSupabaseClient } from '../db/supabase.ts';
-import type { Config } from '../config.ts';
-import { HttpError } from '../errors.ts';
+import type { Config } from '../config/index.ts';
+import { HttpError } from '../lib/errors.ts';
 
 export interface AuthSession {
   access_token: string;
