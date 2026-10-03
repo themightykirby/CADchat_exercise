@@ -126,7 +126,20 @@ npm run typecheck
 npm test
 ```
 
+## Deploying to Render
+
+`render.yaml` describes two services: `cadchat-api` (a Node web service) and `cadchat-web` (a static site).
+
+1. In Render, choose New, Blueprint, and connect this GitHub repo.
+2. Fill in the values Render asks for:
+   - `cadchat-api`: `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, and `CORS_ORIGIN` (the exact URL of the deployed web site, no trailing slash).
+   - `cadchat-web`: `VITE_API_URL` (the URL of the deployed API).
+3. `CORS_ORIGIN` and `VITE_API_URL` point at each other, so deploy once, copy the two URLs Render gives you, set both values, and redeploy.
+4. Check `https://<your-api>/health`. It should return `{"status":"ok"}`.
+
+`VITE_API_URL` is baked in when the web site is built, so change it and redeploy the web service, do not just restart it. On Render's free plan the API sleeps when idle, so the first request after a pause can be slow.
+
 ## Notes
 
-- The API writes logs to `api/logs/app.log`. That works on a normal Node host but not on serverless platforms.
+- The API logs as JSON to the console (stdout and stderr), which is where hosts collect logs.
 - Supabase hosts the database and auth. It does not host a static web app or a long-running Express server, so deploy the web build to a static host and the API to a host that runs Node.

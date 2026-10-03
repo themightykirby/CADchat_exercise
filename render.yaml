@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: cadchat-api
+    runtime: node
+    rootDir: api
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_VERSION
+        value: 24
+      - key: NODE_ENV
+        value: production
+      - key: AUTH_REQUIRED
+        value: true
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SECRET_KEY
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
+
+  - type: web
+    name: cadchat-web
+    runtime: static
+    rootDir: web
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: NODE_VERSION
+        value: 24
+      - key: VITE_AUTH_REQUIRED
+        value: true
+      - key: VITE_API_URL
+        sync: false

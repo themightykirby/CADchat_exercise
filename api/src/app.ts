@@ -9,7 +9,9 @@ import type { ReviewsRepo } from './reviewsRepo.ts';
 import { createAuthRouter } from './routes/auth.ts';
 import { createReviewsRouter } from './routes/reviews.ts';
 
-export function createApp(config: Config, repo: ReviewsRepo,
+export function createApp(
+  config: Config,
+  repo: ReviewsRepo,
   auth: AuthService,
 ): express.Express {
   const app = express();
@@ -29,6 +31,10 @@ export function createApp(config: Config, repo: ReviewsRepo,
     }),
   );
   app.use(express.json({ limit: '10kb' }));
+
+  app.get('/health', (_req, res) => {
+    res.json({ status: 'ok' });
+  });
 
   app.use('/auth', createAuthRouter(auth));
   const guard: express.RequestHandler[] = config.authRequired ? [requireAuth(auth)] : [];

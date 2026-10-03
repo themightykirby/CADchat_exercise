@@ -439,6 +439,12 @@ describe('reviews API', () => {
   });
 
   describe('app behavior', () => {
+    it('serves /health without a token', async () => {
+      const res = await supertest(createApp(config, createReviewsRepo(createFakeClient().client), authService)).get('/health');
+      expect(res.status).toBe(200);
+      expect(res.body).toEqual({ status: 'ok' });
+    });
+
     it('returns 404 for an unknown route', async () => {
       const res = await request(app).get('/nope');
       expect(res.status).toBe(404);
